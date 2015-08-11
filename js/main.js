@@ -70,6 +70,18 @@ function do_submit(sym)
         i++
     });
     //console.log(retorno_datos);
+    parent.$(parent.document).trigger({
+        type: "EDGE_Plantilla_submitApplied",
+        interactionType: "fill-in",
+        json: retorno_datos.json_object,
+        answer: retorno_datos.user_answer,
+        results: retorno_datos.final_stage,
+        position_which_is_right: etorno_datos.position_which_is_right,
+        attempts: retorno_datos.attempts_to,
+        attempts_limit: retorno_datos.json_object.attempts,
+        sym: sym,
+        identify: stage.prop("ed_identify")
+    });
     return retorno_datos;
 }
 
@@ -104,10 +116,10 @@ $('body').on('EDGE_Recurso_Submit', function(evt) {
     do_submit(evt.sym);
 });
 
-$('body').on('EDGE_Recurso_sendPreviousData', function(evt) {
+$('body').on('EDGE_Recurso_sendPreviousData EDGE_Recurso_postSubmitApplied', function(evt) {
         var stage = $(evt.sym.getComposition().getStage().ele);
         if (typeof(evt.previous_data) != "undefined") {
-            console.log(evt.previous_data);
+            //console.log(evt.previous_data);
             for (var i = evt.previous_data.length - 1; i >= 0; i--)
             {              
                 evt.sym.$('text_' + (i + 1)).find('select option[value='+evt.previous_data[i]+']').attr('selected','selected');
