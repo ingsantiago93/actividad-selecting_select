@@ -31,7 +31,7 @@ function ed_send_data(sym)
         });
 
      
-        $('body').trigger({
+        parent.$(parent.document).trigger({
             type: 'EDGE_Plantilla_creationComplete',
             sym: sym,
             identify: stage.prop("ed_identify")
@@ -83,7 +83,7 @@ function do_submit(sym)
         sym: sym,
         identify: stage.prop("ed_identify")
     };
-    $('body').trigger(ed_obj_evt);
+    parent.$(parent.document).trigger(ed_obj_evt);
 
     return retorno_datos;
 }
