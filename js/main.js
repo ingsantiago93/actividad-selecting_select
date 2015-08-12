@@ -69,19 +69,22 @@ function do_submit(sym)
         }
         i++
     });
-    //console.log(retorno_datos);
-    parent.$(parent.document).trigger({
+
+    var ed_obj_evt = 
+    {
         type: "EDGE_Plantilla_submitApplied",
         interactionType: "fill-in",
         json: retorno_datos.json_object,
         answer: retorno_datos.user_answer,
         results: retorno_datos.final_stage,
-        position_which_is_right: etorno_datos.position_which_is_right,
+        position_which_is_right: retorno_datos.position_which_is_right,
         attempts: retorno_datos.attempts_to,
         attempts_limit: retorno_datos.json_object.attempts,
         sym: sym,
         identify: stage.prop("ed_identify")
-    });
+    };
+    $('body').trigger(ed_obj_evt);
+
     return retorno_datos;
 }
 
@@ -136,6 +139,11 @@ $('body').on('EDGE_Recurso_sendPreviousData EDGE_Recurso_postSubmitApplied', fun
 
         if (typeof(evt.attempts) != "undefined") {
             stage.prop('ed_attempts', evt.attempts);
+        }
+
+        if(evt.show_answers)
+        {
+            show_correct_answers(evt.sym)
         }
 
     });
