@@ -33,25 +33,28 @@
                             id: 'text_1',
                             symbolName: 'text_1',
                             type: 'rect',
-                            rect: ['88', '64', '1010', '170', 'auto', 'auto']
+                            rect: ['-268px', '36px', '1010', '170', 'auto', 'auto'],
+                            transform: [[],[],[],['0.29593','0.6732']]
                         },
                         {
                             id: 'text_2',
                             symbolName: 'text_2',
                             type: 'rect',
-                            rect: ['88', '253', '1010', '170', 'auto', 'auto']
+                            rect: ['-268px', '226px', '1010', '170', 'auto', 'auto'],
+                            transform: [[],[],[],['0.29604','0.6732']]
                         },
                         {
                             id: 'text_3',
                             symbolName: 'text_3',
                             type: 'rect',
-                            rect: ['88', '447', '1010', '170', 'auto', 'auto']
+                            rect: ['-268px', '423px', '1010', '170', 'auto', 'auto'],
+                            transform: [[],[],[],['0.29604','0.71678']]
                         },
                         {
                             id: 'btn_submit',
                             symbolName: 'btn_submit',
                             type: 'rect',
-                            rect: ['1349', '240', '256', '237', 'auto', 'auto']
+                            rect: ['560px', '178px', '256', '237', 'auto', 'auto']
                         }
                     ],
                     style: {
@@ -187,8 +190,7 @@
                     ],
                     style: {
                         '${symbolSelector}': {
-                            isStage: 'true',
-                            rect: [undefined, undefined, '256px', '237px']
+                            rect: [null, null, '256px', '237px']
                         }
                     }
                 },

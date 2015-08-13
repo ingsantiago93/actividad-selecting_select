@@ -46,20 +46,16 @@
     "css_config_select": {
         "color": "white",
         "font-weight": "bold",
-        "font-size": "40px",
+        "font-size": "80px",
         "font-family": "'Source Sans Pro', sans-serif;",
         "text-align": "center",
         "background": "rgba(0, 0, 0, 1)",
-        "border": "none",
         "position": "absolute"
     },
     "css_config_option": {
-        "color": "black",
+        "color": "white",
         "font-weight": "bold",
-        "font-size": "20px",
         "font-family": "'Source Sans Pro', sans-serif;",
-        "text-align": "center",
-        "background": "rgba(255, 255, 255, 1)",
-        "border": "none"
+        "text-align": "center"
     }
 }
