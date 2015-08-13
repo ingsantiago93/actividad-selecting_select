@@ -19,9 +19,11 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // los alias más comu
       });
       //Edge binding end
 
-      
-
-      
+      Symbol.bindElementAction(compId, symbolName, "${btn_submit}", "click", function(sym, e) {
+         // introducir aquí código para clic de ratón
+         EDGE_Recurso_Submit(sym);
+      });
+      //Edge binding end
 
    })("stage");
    //Edge symbol end:'stage'
@@ -49,5 +51,13 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // los alias más comu
    
    })("text_3");
    //Edge symbol end:'text_3'
+
+   //=========================================================
+   
+   //Edge symbol: 'btn_submit'
+   (function(symbolName) {   
+   
+   })("btn_submit");
+   //Edge symbol end:'btn_submit'
 
 })(window.jQuery || AdobeEdge.$, AdobeEdge, "EDGE-14164065");

@@ -1,10 +1,7 @@
-function EDGE_Recurso_Submit(sym)
+$('body').on('EDGE_Recurso_promiseCreated', function(evt)
 {
-    $('body').trigger({
-        type: 'EDGE_Recurso_Submit',
-        sym: sym
-    });
-}
+    ed_send_data(evt.sym);
+});
 
 function ed_send_data(sym)
 {
@@ -31,17 +28,14 @@ function ed_send_data(sym)
 
             for (var i = 0; i < json_select_object.opciones.length; i++)
             {
-                var option = $("<option/>", {value: i+1});
-                option.text(json_select_object.opciones[i].valor);
+                var option = $("<option/>", {value: json_select_object.opciones[i].valor});
+                option.text(json_select_object.opciones[i].opcion);
                 option.css(stage.prop('ed_json_property_object').css_config_option);
                 element.append(option);
                 //element.append('<option value="'+json_select_object.opciones[i].valor+'">'+json_select_object.opciones[i].opcion+'</option>');
-            }
-            
-            
+            }         
             sym.$('text_' + key).append(element);
         });
-
 
         parent.$(parent.document).trigger({
             type: 'EDGE_Plantilla_creationComplete',
@@ -51,6 +45,78 @@ function ed_send_data(sym)
 
     });
 }
+
+$('body').on("EDGE_Plantilla_creationComplete", function (evt) {
+
+    $('body').trigger({
+        type: "EDGE_Recurso_sendPreviousData",
+        block: true,
+        previous_data: ["value_2", "value_1_2", "ok"],
+        attempts: 2,
+        show_answers: false,
+        sym: evt.sym,
+        identify: {}
+    });
+});
+
+$('body').on('EDGE_Recurso_sendPreviousData EDGE_Recurso_postSubmitApplied', function (evt) {
+    var stage = $(evt.sym.getComposition().getStage().ele);
+    if (typeof (evt.previous_data) !== "undefined") {
+        for (var i = evt.previous_data.length - 1; i >= 0; i--)
+        {
+            evt.sym.$('text_' + (i + 1)).find('select option[value=' + evt.previous_data[i] + ']').attr('selected', 'selected');
+        }
+    }
+
+    if (evt.block) 
+    {
+        //Debe bloquear la actividad
+        stage.prop('ed_blocked', true);
+        block_every_select(evt.sym);
+    }
+    if (typeof (evt.attempts) !== "undefined") {
+        stage.prop('ed_attempts', evt.attempts);
+    }
+
+    if (evt.show_answers)
+    {
+        show_correct_answers(evt.sym);
+    }
+
+});
+
+function show_correct_answers(sym)
+{
+    var json_stage = $(sym.getComposition().getStage().ele).prop('ed_json_property_object');
+
+    $.each(json_stage.selecciones_a_elegir, function (key, json_select_object)
+    {
+        sym.$('text_' + key).find('select option[value=' + json_select_object.valor_correcto + ']').attr('selected', 'selected');
+    });
+}
+
+function block_every_select(sym)
+{
+    var json_stage = $(sym.getComposition().getStage().ele).prop('ed_json_property_object');
+    var arrays = json_stage.palabras_a_escribir;
+
+    $.each(json_stage.selecciones_a_elegir, function (key, json_select_object) {
+        sym.$('text_' + key).find('select option').prop('disabled', false);
+        sym.$('text_' + key).find('select option').attr('disabled', 'disabled');
+    });
+}
+
+function EDGE_Recurso_Submit(sym)
+{
+    $('body').trigger({
+        type: 'EDGE_Recurso_Submit',
+        sym: sym
+    });
+}
+
+$('body').on('EDGE_Recurso_Submit', function (evt) {
+    do_submit(evt.sym);
+});
 
 function do_submit(sym)
 {
@@ -70,12 +136,11 @@ function do_submit(sym)
 
     var i = 0;
     $.each(json_stage.selecciones_a_elegir, function (key, json_select_object) {
-        retorno_datos.user_answer[i] = sym.$('text_' + key).val();
+        retorno_datos.user_answer[i] = sym.$('text_' + key).find('select').val();
         if (sym.$('text_' + key).find('select').val() === json_select_object.valor_correcto) {
             retorno_datos.position_which_is_right[i] = true;
             retorno_datos.final_stage = "correct";
         } else {
-            //No debe sumar puntos si su respuesta es incorrecta
             retorno_datos.position_which_is_right[i] = false;
             retorno_datos.final_stage = "incorrect";
         }
@@ -95,78 +160,8 @@ function do_submit(sym)
                 sym: sym,
                 identify: stage.prop("ed_identify")
             };
+    console.log(retorno_datos);
     parent.$(parent.document).trigger(ed_obj_evt);
 
     return retorno_datos;
-}
-
-function show_correct_answers(sym)
-{
-    var json_stage = $(sym.getComposition().getStage().ele).prop('ed_json_property_object');
-
-    $.each(json_stage.selecciones_a_elegir, function (key, json_select_object)
-    {
-        sym.$('text_' + key).find('select option[value=' + json_select_object.valor_correcto + ']').attr('selected', 'selected');
-    });
-}
-
-$('body').on('EDGE_Recurso_promiseCreated', function (evt) {
-
-    ed_send_data(evt.sym);
-});
-
-$('body').on("EDGE_Plantilla_creationComplete", function (evt) {
-
-    $('body').trigger({
-        type: "EDGE_Recurso_sendPreviousData",
-        block: false,
-        previous_data: ["value_2", "value_1_2", "ok"],
-        attempts: 2,
-        sym: evt.sym,
-        identify: {}
-    });
-});
-
-$('body').on('EDGE_Recurso_Submit', function (evt) {
-    do_submit(evt.sym);
-});
-
-$('body').on('EDGE_Recurso_sendPreviousData EDGE_Recurso_postSubmitApplied', function (evt) {
-    var stage = $(evt.sym.getComposition().getStage().ele);
-    if (typeof (evt.previous_data) !== "undefined") {
-        //console.log(evt.previous_data);
-        for (var i = evt.previous_data.length - 1; i >= 0; i--)
-        {
-            evt.sym.$('text_' + (i + 1)).find('select option[value=' + evt.previous_data[i] + ']').attr('selected', 'selected');
-        }
-    }
-
-    if (evt.block) {
-        //Debe bloquear la actividad
-        stage.prop('ed_blocked', true);
-        block_every_select(evt.sym);
-    } else {
-        //nada
-    }
-
-    if (typeof (evt.attempts) !== "undefined") {
-        stage.prop('ed_attempts', evt.attempts);
-    }
-
-    if (evt.show_answers)
-    {
-        show_correct_answers(evt.sym);
-    }
-
-});
-
-function block_every_select(sym)
-{
-    var json_stage = $(sym.getComposition().getStage().ele).prop('ed_json_property_object');
-    var arrays = json_stage.palabras_a_escribir;
-
-    $.each(json_stage.selecciones_a_elegir, function (key, json_select_object) {
-        sym.$('text_' + key).find('select').prop('readonly', 'readonly');
-        sym.$('text_' + key).find('select').attr('readonly', 'readonly');
-    });
 }

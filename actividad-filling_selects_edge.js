@@ -46,6 +46,12 @@
                             symbolName: 'text_3',
                             type: 'rect',
                             rect: ['88', '447', '1010', '170', 'auto', 'auto']
+                        },
+                        {
+                            id: 'btn_submit',
+                            symbolName: 'btn_submit',
+                            type: 'rect',
+                            rect: ['1349', '240', '256', '237', 'auto', 'auto']
                         }
                     ],
                     style: {
@@ -85,8 +91,7 @@
                     ],
                     style: {
                         '${symbolSelector}': {
-                            isStage: 'true',
-                            rect: [undefined, undefined, '1010px', '170px']
+                            rect: [null, null, '1010px', '170px']
                         }
                     }
                 },
@@ -118,8 +123,7 @@
                     ],
                     style: {
                         '${symbolSelector}': {
-                            isStage: 'true',
-                            rect: [undefined, undefined, '1010px', '170px']
+                            rect: [null, null, '1010px', '170px']
                         }
                     }
                 },
@@ -151,8 +155,40 @@
                     ],
                     style: {
                         '${symbolSelector}': {
+                            rect: [null, null, '1010px', '170px']
+                        }
+                    }
+                },
+                timeline: {
+                    duration: 0,
+                    autoPlay: true,
+                    data: [
+
+                    ]
+                }
+            },
+            "btn_submit": {
+                version: "6.0.0",
+                minimumCompatibleVersion: "5.0.0",
+                build: "6.0.0.400",
+                scaleToFit: "none",
+                centerStage: "none",
+                resizeInstances: false,
+                content: {
+                    dom: [
+                        {
+                            rect: ['0px', '0px', '256px', '237px', 'auto', 'auto'],
+                            borderRadius: ['50%', '50%', '50%', '50%'],
+                            id: 'Ellipse',
+                            stroke: [0, 'rgba(0,0,0,1)', 'none'],
+                            type: 'ellipse',
+                            fill: ['rgba(192,192,192,1)']
+                        }
+                    ],
+                    style: {
+                        '${symbolSelector}': {
                             isStage: 'true',
-                            rect: [undefined, undefined, '1010px', '170px']
+                            rect: [undefined, undefined, '256px', '237px']
                         }
                     }
                 },
