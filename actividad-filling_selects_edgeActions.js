@@ -19,11 +19,9 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // los alias más comu
       });
       //Edge binding end
 
-      Symbol.bindElementAction(compId, symbolName, "${text_3}", "click", function(sym, e) {
-         // introducir aquí código para clic de ratón         
-         EDGE_Recurso_Submit(sym);
-      });
-      //Edge binding end
+      
+
+      
 
    })("stage");
    //Edge symbol end:'stage'
