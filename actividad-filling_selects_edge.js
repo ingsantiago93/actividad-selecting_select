@@ -25,7 +25,7 @@
                 minimumCompatibleVersion: "5.0.0",
                 build: "6.0.0.400",
                 scaleToFit: "none",
-                centerStage: "none",
+                centerStage: "both",
                 resizeInstances: false,
                 content: {
                     dom: [
@@ -33,27 +33,27 @@
                             id: 'text_1',
                             symbolName: 'text_1',
                             type: 'rect',
-                            rect: ['74', '110', '140', '43', 'auto', 'auto']
+                            rect: ['88', '64', '1010', '170', 'auto', 'auto']
                         },
                         {
                             id: 'text_2',
                             symbolName: 'text_2',
                             type: 'rect',
-                            rect: ['99', '220', '167', '43', 'auto', 'auto']
+                            rect: ['88', '253', '1010', '170', 'auto', 'auto']
                         },
                         {
                             id: 'text_3',
                             symbolName: 'text_3',
                             type: 'rect',
-                            rect: ['383', '110', '128', '43', 'auto', 'auto']
+                            rect: ['88', '447', '1010', '170', 'auto', 'auto']
                         }
                     ],
                     style: {
                         '${Stage}': {
                             isStage: true,
-                            rect: ['null', 'null', '550px', '400px', 'auto', 'auto'],
+                            rect: ['null', 'null', '1830px', '780px', 'auto', 'auto'],
                             overflow: 'hidden',
-                            fill: ["rgba(255,255,255,1)"]
+                            fill: ["rgba(255,255,255,0.00)"]
                         }
                     }
                 },
@@ -75,24 +75,18 @@
                 content: {
                     dom: [
                         {
-                            rect: ['0px', '0px', '140px', '43px', 'auto', 'auto'],
+                            rect: ['0px', '0px', '1010px', '170px', 'auto', 'auto'],
                             borderRadius: ['10px', '10px', '10px', '10px'],
                             id: 'RoundRect',
-                            stroke: [0, 'rgba(0,0,0,0.00)', 'none'],
+                            stroke: [0, 'rgba(0,0,0,1)', 'none'],
                             type: 'rect',
-                            fill: ['rgba(191,0,0,1.00)']
-                        },
-                        {
-                            rect: ['0px', '0px', '140px', '43px', 'auto', 'auto'],
-                            id: 'Text',
-                            text: '<p style=\"margin: 0px;\">​</p>',
-                            font: ['Arial, Helvetica, sans-serif', [24, ''], 'rgba(0,0,0,1)', 'normal', 'none', '', 'break-word', 'normal'],
-                            type: 'text'
+                            fill: ['rgba(166,38,224,1.00)']
                         }
                     ],
                     style: {
                         '${symbolSelector}': {
-                            rect: [null, null, '140px', '43px']
+                            isStage: 'true',
+                            rect: [undefined, undefined, '1010px', '170px']
                         }
                     }
                 },
@@ -114,26 +108,18 @@
                 content: {
                     dom: [
                         {
-                            rect: ['0px', '0px', '167px', '43px', 'auto', 'auto'],
+                            rect: ['0px', '0px', '1010px', '170px', 'auto', 'auto'],
                             borderRadius: ['10px', '10px', '10px', '10px'],
-                            id: 'RoundRect2',
-                            stroke: [0, 'rgba(0, 0, 0, 0)', 'none'],
+                            id: 'RoundRectCopy',
+                            stroke: [0, 'rgba(0,0,0,1)', 'none'],
                             type: 'rect',
-                            fill: ['rgba(0,0,220,1.00)']
-                        },
-                        {
-                            rect: ['0px', '0px', '167px', '43px', 'auto', 'auto'],
-                            font: ['Arial, Helvetica, sans-serif', [24, 'px'], 'rgba(0,0,0,1)', '400', 'none', 'normal', 'break-word', 'normal'],
-                            align: 'left',
-                            id: 'Text2',
-                            text: '<p style=\"margin: 0px;\">​</p>',
-                            textStyle: ['', '', '', '', 'none'],
-                            type: 'text'
+                            fill: ['rgba(107,38,224,1.00)']
                         }
                     ],
                     style: {
                         '${symbolSelector}': {
-                            rect: [null, null, '167px', '43px']
+                            isStage: 'true',
+                            rect: [undefined, undefined, '1010px', '170px']
                         }
                     }
                 },
@@ -155,26 +141,18 @@
                 content: {
                     dom: [
                         {
-                            rect: ['0px', '0px', '128px', '43px', 'auto', 'auto'],
+                            rect: ['0px', '0px', '1010px', '170px', 'auto', 'auto'],
                             borderRadius: ['10px', '10px', '10px', '10px'],
-                            id: 'RoundRect3',
-                            stroke: [0, 'rgba(0, 0, 0, 0)', 'none'],
+                            id: 'RoundRectCopy2',
+                            stroke: [0, 'rgba(0,0,0,1)', 'none'],
                             type: 'rect',
-                            fill: ['rgba(0,132,37,1.00)']
-                        },
-                        {
-                            rect: ['0px', '0px', '128px', '43px', 'auto', 'auto'],
-                            font: ['Arial, Helvetica, sans-serif', [24, 'px'], 'rgba(0,0,0,1)', '400', 'none', 'normal', 'break-word', 'normal'],
-                            align: 'left',
-                            id: 'Text3',
-                            text: '<p style=\"margin: 0px;\">​</p>',
-                            textStyle: ['', '', '', '', 'none'],
-                            type: 'text'
+                            fill: ['rgba(38,38,224,1.00)']
                         }
                     ],
                     style: {
                         '${symbolSelector}': {
-                            rect: [null, null, '128px', '43px']
+                            isStage: 'true',
+                            rect: [undefined, undefined, '1010px', '170px']
                         }
                     }
                 },

@@ -1,55 +1,65 @@
 {
-    "selecciones_a_elegir": 
-    {
-        "1": {
-            "text_default":"texto para el select",
-            "opciones":[{
-                    "opcion": "opcion_1",
-                    "valor": "value_1"
+    "selecciones_a_elegir":
+            {
+                "1": {
+                    "text_default": "texto para el select",
+                    "opciones": [{
+                            "opcion": "opcion_1",
+                            "valor": "value_1"
+                        },
+                        {
+                            "opcion": "opcion_2",
+                            "valor": "value_2"
+                        }],
+                    "valor_correcto": "value_2",
+                    "descripcion": "descripcion de la pregunta"
                 },
-                {
-                    "opcion": "opcion_2",
-                    "valor": "value_2"
-                    }],
-            "valor_correcto":"value_2",
-            "descripcion": "descripcion de la pregunta"
-        },
-        "2": {
-            "text_default":"texto para el select_2",
-            "opciones":[{
-                    "opcion": "opcion_1_2",
-                    "valor": "value_1_2"
+                "2": {
+                    "text_default": "texto para el select_2",
+                    "opciones": [{
+                            "opcion": "opcion_1_2",
+                            "valor": "value_1_2"
+                        },
+                        {
+                            "opcion": "opcion_2_2",
+                            "valor": "value_2_2"
+                        }],
+                    "valor_correcto": "value_1_2",
+                    "descripcion": "descripcion de la pregunta_2"
                 },
-                {
-                    "opcion": "opcion_2_2",
-                    "valor": "value_2_2"
-                    }],
-            "valor_correcto": "value_1_2",
-            "descripcion": "descripcion de la pregunta_2"
-        },
-        "3": {
-            "text_default":"texto para el select_3",
-            "opciones":[{
-                    "opcion": "opcion_1_3",
-                    "valor": "value_1_3"
-                },
-                {
-                    "opcion": "opcion_2_3",
-                    "valor": "value_2_3"
-                    }],
-            "valor_correcto":"value_2_3",
-            "descripcion": "descripcion de la pregunta_3"
-        }
-        
-    },
-	"attempts": 3,
-    "css_config": {
-        "color": "#00FF00",
-        "font-size": "30px",
+                "3": {
+                    "text_default": "texto para el select_3",
+                    "opciones": [{
+                            "opcion": "opcion_1_3",
+                            "valor": "value_1_3"
+                        },
+                        {
+                            "opcion": "opcion_2_3",
+                            "valor": "value_2_3"
+                        }],
+                    "valor_correcto": "value_2_3",
+                    "descripcion": "descripcion de la pregunta_3"
+                }
+
+            },
+    "attempts": 3,
+    "css_config_select": {
+        "color": "white",
+        "font-weight": "bold",
+        "font-size": "40px",
         "font-family": "'Source Sans Pro', sans-serif;",
         "text-align": "center",
-        "background": "rgba(0, 0, 0, 0)",
+        "background": "rgba(0, 0, 0, 1)",
         "border": "none",
         "position": "absolute"
+    },
+    "css_config_option": {
+        "color": "black",
+        "font-weight": "bold",
+        "font-size": "20px",
+        "font-family": "'Source Sans Pro', sans-serif;",
+        "text-align": "center",
+        "background": "rgba(255, 255, 255, 1)",
+        "border": "none"
     }
 }
