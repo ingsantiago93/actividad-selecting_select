@@ -46,10 +46,9 @@
     "css_config_select": {
         "color": "white",
         "font-weight": "bold",
-        "font-size": "80px",
+        "font-size": "25px",
         "font-family": "'Source Sans Pro', sans-serif;",
         "text-align": "center",
-        "background": "rgba(0, 0, 0, 1)",
         "position": "absolute"
     },
     "css_config_option": {

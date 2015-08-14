@@ -17,7 +17,9 @@
         ],
         scripts = [
             js+"jquery-1.10.2.js",
-            js+"main.js"
+            js+"main.js",
+            js+"bootstrap-select.js",
+            js+"bootstrap.min.js"
         ],
         symbols = {
             "stage": {

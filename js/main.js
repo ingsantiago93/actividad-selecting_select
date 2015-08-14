@@ -5,6 +5,8 @@ $('body').on('EDGE_Recurso_promiseCreated', function(evt)
 
 function ed_send_data(sym)
 {
+    $('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">').appendTo("head");
+    $('<link rel="stylesheet" href="bootstrap-select.css">').appendTo("head");
     $.getJSON('config.json', function (json_content) {
 
         var stage = $(sym.getComposition().getStage().ele);
@@ -16,13 +18,13 @@ function ed_send_data(sym)
             var element = $("<select/>");
             element.css(stage.prop('ed_json_property_object').css_config_select);
             element.css({
-                width: sym.$('text_' + key).css("width"),
-                height: sym.$('text_' + key).css("height")
+                width: 8
+               // height: sym.$('text_' + key).css("height")
             });
 
             var option = $("<option/>", {value: ""});
             option.text(json_select_object.text_default);
-            option.css(stage.prop('ed_json_property_object').css_config_option);
+            //option.css(stage.prop('ed_json_property_object').css_config_option);
 
             element.append(option);
 
@@ -30,11 +32,15 @@ function ed_send_data(sym)
             {
                 var option = $("<option/>", {value: json_select_object.opciones[i].valor});
                 option.text(json_select_object.opciones[i].opcion);
-                option.css(stage.prop('ed_json_property_object').css_config_option);
+                //option.css(stage.prop('ed_json_property_object').css_config_option);
                 element.append(option);
                 //element.append('<option value="'+json_select_object.opciones[i].valor+'">'+json_select_object.opciones[i].opcion+'</option>');
-            }         
+            }            
             sym.$('text_' + key).append(element);
+        });
+
+        $('select').selectpicker({
+            size: 10
         });
 
         parent.$(parent.document).trigger({
@@ -48,7 +54,7 @@ function ed_send_data(sym)
 
 $('body').on("EDGE_Plantilla_creationComplete", function (evt) {
 
-    $('body').trigger({
+    /*$('body').trigger({
         type: "EDGE_Recurso_sendPreviousData",
         block: true,
         previous_data: ["value_2", "value_1_2", "ok"],
@@ -56,7 +62,7 @@ $('body').on("EDGE_Plantilla_creationComplete", function (evt) {
         show_answers: false,
         sym: evt.sym,
         identify: {}
-    });
+    });*/
 });
 
 $('body').on('EDGE_Recurso_sendPreviousData EDGE_Recurso_postSubmitApplied', function (evt) {
@@ -75,7 +81,7 @@ $('body').on('EDGE_Recurso_sendPreviousData EDGE_Recurso_postSubmitApplied', fun
         block_every_select(evt.sym);
     }
     if (typeof (evt.attempts) !== "undefined") {
-        stage.prop('ed_attempts', evt.attempts);
+        stage.prop('ed_user_attempts', evt.attempts);
     }
 
     if (evt.show_answers)
