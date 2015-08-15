@@ -1,12 +1,14 @@
 $('body').on('EDGE_Recurso_promiseCreated', function(evt)
 {
+    console.log("Try to tell me");
     ed_send_data(evt.sym);
 });
 
 function ed_send_data(sym)
 {
-    $('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">').appendTo("head");
+    $('<link rel="stylesheet" href="bootstrap.min.css">').appendTo("head");
     $('<link rel="stylesheet" href="bootstrap-select.css">').appendTo("head");
+    
     $.getJSON('config.json', function (json_content) {
 
         var stage = $(sym.getComposition().getStage().ele);
@@ -14,7 +16,6 @@ function ed_send_data(sym)
         stage.prop('ed_user_attempts', json_content.attempts);
 
         $.each(json_content.selecciones_a_elegir, function (key, json_select_object) {
-
             var element = $("<select/>");
             element.css(stage.prop('ed_json_property_object').css_config_select);
             element.css({
@@ -35,11 +36,15 @@ function ed_send_data(sym)
                 //option.css(stage.prop('ed_json_property_object').css_config_option);
                 element.append(option);
                 //element.append('<option value="'+json_select_object.opciones[i].valor+'">'+json_select_object.opciones[i].opcion+'</option>');
-            }            
+            }
             sym.$('text_' + key).append(element);
         });
 
+        $('<style type="text/css">.dropdown-menu{ font-size:'+stage.prop('ed_json_property_object').other_css.tamano+';} .btn{font-size: '+stage.prop('ed_json_property_object').other_css.tamano+';}</style>').appendTo("head");
+
         $('select').selectpicker({
+            style: "myclass",
+            width: stage.prop('ed_json_property_object').other_css.ancho,
             size: 10
         });
 
@@ -126,6 +131,7 @@ $('body').on('EDGE_Recurso_Submit', function (evt) {
 
 function do_submit(sym)
 {
+
     var stage = $(sym.getComposition().getStage().ele);
     var json_stage = stage.prop("ed_json_property_object");
     var activity_score = 0;
