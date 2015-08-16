@@ -1,11 +1,10 @@
 $('body').on('EDGE_Recurso_promiseCreated', function(evt)
 {
-    console.log("Try to tell me");
     ed_send_data(evt.sym);
 });
 
 function ed_send_data(sym)
-{
+{    
     $('<link rel="stylesheet" href="bootstrap.min.css">').appendTo("head");
     $('<link rel="stylesheet" href="bootstrap-select.css">').appendTo("head");
     
@@ -39,8 +38,7 @@ function ed_send_data(sym)
             }
             sym.$('text_' + key).append(element);
         });
-
-        $('<style type="text/css">.dropdown-menu{ font-size:'+stage.prop('ed_json_property_object').other_css.tamano+';} .btn{font-size: '+stage.prop('ed_json_property_object').other_css.tamano+';}</style>').appendTo("head");
+        $('<style type="text/css">.dropdown-menu{ font-size:'+stage.prop('ed_json_property_object').other_css.tamano+'; font-family: '+stage.prop('ed_json_property_object').other_css.fuente+'; letter-spacing: 3px;} .btn{font-size: '+stage.prop('ed_json_property_object').other_css.tamano+'; letter-spacing: 3px; padding-left: 20%}</style>').appendTo("head");
 
         $('select').selectpicker({
             style: "myclass",

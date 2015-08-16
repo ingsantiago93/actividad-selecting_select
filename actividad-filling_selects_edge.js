@@ -35,15 +35,15 @@
                             id: 'text_1',
                             symbolName: 'text_1',
                             type: 'rect',
-                            rect: ['-268px', '36px', '1010', '170', 'auto', 'auto'],
-                            transform: [[],[],[],['0.29593','0.6732']]
+                            rect: ['-268px', '4px', '1010', '170', 'auto', 'auto'],
+                            transform: [[],[],[],['0.29593','0.29412']]
                         },
                         {
                             id: 'text_2',
                             symbolName: 'text_2',
                             type: 'rect',
-                            rect: ['-268px', '226px', '1010', '170', 'auto', 'auto'],
-                            transform: [[],[],[],['0.29604','0.6732']]
+                            rect: ['-268px', '194px', '1010', '170', 'auto', 'auto'],
+                            transform: [[],[],[],['0.29604','0.29412']]
                         },
                         {
                             id: 'text_3',
@@ -96,7 +96,8 @@
                     ],
                     style: {
                         '${symbolSelector}': {
-                            rect: [null, null, '1010px', '170px']
+                            isStage: 'true',
+                            rect: [undefined, undefined, '1010px', '170px']
                         }
                     }
                 },

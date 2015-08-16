@@ -45,7 +45,8 @@
     "attempts": 3,
     "other_css": {
         "tamano": "40px !important",
-        "ancho": "750px"
+        "ancho": "750px",
+        "fuente": "'Source Sans Pro', sans-serif !important;"
     },
     "css_config_select": {
         "font-weight": "bold !important",
