@@ -46,12 +46,28 @@ function ed_send_data(sym)
             size: 10
         });
 
+        $("select").change(function()
+            {
+                send_on_change(sym);
+            });
+
         parent.$(parent.document).trigger({
             type: 'EDGE_Plantilla_creationComplete',
             sym: sym,
             identify: stage.prop("ed_identify")
         });
 
+    });
+}
+
+function send_on_change(sym)
+{
+    var stage = $(sym.getComposition().getStage().ele);
+    parent.$(parent.document).trigger(
+    {
+        type: "EDGE_Plantilla_on_change",
+        sym: sym,
+        identify: stage.prop("ed_identify")
     });
 }
 
