@@ -96,8 +96,7 @@
                     ],
                     style: {
                         '${symbolSelector}': {
-                            isStage: 'true',
-                            rect: [undefined, undefined, '1010px', '170px']
+                            rect: [null, null, '1010px', '170px']
                         }
                     }
                 },
@@ -185,23 +184,48 @@
                         {
                             rect: ['0px', '0px', '256px', '237px', 'auto', 'auto'],
                             borderRadius: ['50%', '50%', '50%', '50%'],
-                            id: 'Ellipse',
                             stroke: [0, 'rgba(0,0,0,1)', 'none'],
+                            id: 'Ellipse',
+                            opacity: '0.71034482758621',
                             type: 'ellipse',
-                            fill: ['rgba(192,192,192,1)']
+                            fill: ['rgba(0,41,148,1.00)']
                         }
                     ],
                     style: {
                         '${symbolSelector}': {
-                            rect: [null, null, '256px', '237px']
+                            isStage: 'true',
+                            rect: [undefined, undefined, '256px', '237px']
                         }
                     }
                 },
                 timeline: {
-                    duration: 0,
+                    duration: 500,
                     autoPlay: true,
+                    labels: {
+                        "normal": 0,
+                        "desactivado": 500
+                    },
                     data: [
-
+                        [
+                            "eid3",
+                            "background-color",
+                            0,
+                            0,
+                            "linear",
+                            "${Ellipse}",
+                            'rgba(0,41,148,1.00)',
+                            'rgba(0,41,148,1.00)'
+                        ],
+                        [
+                            "eid2",
+                            "background-color",
+                            500,
+                            0,
+                            "linear",
+                            "${Ellipse}",
+                            'rgba(0,41,148,1.00)',
+                            'rgba(192,192,192,1)'
+                        ]
                     ]
                 }
             }
