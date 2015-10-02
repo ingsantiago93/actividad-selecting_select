@@ -53,10 +53,11 @@
                             transform: [[],[],[],['0.29604','0.71678']]
                         },
                         {
-                            id: 'btn_submit',
-                            symbolName: 'btn_submit',
+                            id: 'Submit',
+                            symbolName: 'Submit',
                             type: 'rect',
-                            rect: ['560px', '178px', '256', '237', 'auto', 'auto']
+                            rect: ['603px', '322px', 'undefined', 'undefined', 'auto', 'auto'],
+                            cursor: 'pointer'
                         }
                     ],
                     style: {
@@ -69,7 +70,7 @@
                     }
                 },
                 timeline: {
-                    duration: 0,
+                    duration: 2000,
                     autoPlay: true,
                     data: [
 
@@ -184,17 +185,16 @@
                         {
                             rect: ['0px', '0px', '256px', '237px', 'auto', 'auto'],
                             borderRadius: ['50%', '50%', '50%', '50%'],
-                            stroke: [0, 'rgba(0,0,0,1)', 'none'],
-                            id: 'Ellipse',
                             opacity: '0.71034482758621',
+                            id: 'Ellipse',
+                            stroke: [0, 'rgba(0,0,0,1)', 'none'],
                             type: 'ellipse',
                             fill: ['rgba(0,41,148,1.00)']
                         }
                     ],
                     style: {
                         '${symbolSelector}': {
-                            isStage: 'true',
-                            rect: [undefined, undefined, '256px', '237px']
+                            rect: [null, null, '256px', '237px']
                         }
                     }
                 },
@@ -225,6 +225,72 @@
                             "${Ellipse}",
                             'rgba(0,41,148,1.00)',
                             'rgba(192,192,192,1)'
+                        ]
+                    ]
+                }
+            },
+            "Submit": {
+                version: "6.0.0",
+                minimumCompatibleVersion: "5.0.0",
+                build: "6.0.0.400",
+                scaleToFit: "none",
+                centerStage: "none",
+                resizeInstances: false,
+                content: {
+                    dom: [
+                        {
+                            rect: ['0px', '1px', '213px', '43px', 'auto', 'auto'],
+                            borderRadius: ['23px', '23px', '23px', '23px 23px'],
+                            stroke: [0, 'rgba(0,0,0,1)', 'none'],
+                            id: 'RoundRect',
+                            opacity: '0.5',
+                            type: 'rect',
+                            fill: ['rgba(192,192,192,1)', [270, [['rgba(111,67,158,1.00)', 50], ['rgba(84,53,118,1.00)', 50]]]],
+                            c: [
+                            {
+                                rect: ['0px', '-1px', '213px', '31px', 'auto', 'auto'],
+                                font: ['Arial, Helvetica, sans-serif', [24, ''], 'rgba(0,0,0,1)', 'normal', 'none', '', 'break-word', 'normal'],
+                                id: 'texto_4',
+                                text: '<p style=\"margin: 0px; text-align: center;\">​<span style=\"font-family: source-sans-pro, sans-serif; font-weight: 600; color: rgb(255, 255, 255); font-size: 25px;\">Enviar</span></p>',
+                                textShadow: ['rgba(0,0,0,0.65098)', 1, 1, 1],
+                                type: 'text'
+                            }]
+                        }
+                    ],
+                    style: {
+                        '${symbolSelector}': {
+                            isStage: 'true',
+                            rect: [undefined, undefined, '213px', '43px']
+                        }
+                    }
+                },
+                timeline: {
+                    duration: 2000,
+                    autoPlay: true,
+                    labels: {
+                        "desactivado": 0,
+                        "activado": 2000
+                    },
+                    data: [
+                        [
+                            "eid356",
+                            "opacity",
+                            0,
+                            0,
+                            "linear",
+                            "${RoundRect}",
+                            '0.5',
+                            '0.5'
+                        ],
+                        [
+                            "eid355",
+                            "opacity",
+                            2000,
+                            0,
+                            "linear",
+                            "${RoundRect}",
+                            '0.5',
+                            '1'
                         ]
                     ]
                 }

@@ -50,16 +50,16 @@ function ed_send_data(sym)
             {
                 send_on_change(sym);
             });
-        //$('body')
+
         parent.$(parent.document).trigger({
             type: 'EDGE_Plantilla_creationComplete',
             sym: sym,
             identify: stage.prop("ed_identify")
         });
 
-        if(sym.$("btn_submit").length>0)
+        if(sym.$("Submit").length>0)
         {
-            sym.getSymbol("btn_submit").play("desactivado");           
+            sym.getSymbol("Submit").playReverse("desactivado");           
         }
 
         stage.prop('ed_blocked',true);
@@ -113,18 +113,18 @@ function send_on_change(sym)
 
     if(retorno_datos.isReady == true)
     {
-        if(sym.$("btn_submit").length>0)
+        if(sym.$("Submit").length>0)
         {
-            sym.getSymbol("btn_submit").playReverse("normal");
+            sym.getSymbol("Submit").play("activado");
         }
 
         stage.prop('ed_blocked',false);        
     }
     else
     {
-        if(sym.$("btn_submit").length>0)
+        if(sym.$("Submit").length>0)
         {
-            sym.getSymbol("btn_submit").play("desactivado");
+            sym.getSymbol("Submit").playReverse("desactivado");
         }
 
         stage.prop('ed_blocked',false);
@@ -186,9 +186,9 @@ $('body').on('EDGE_Recurso_sendPreviousData EDGE_Recurso_postSubmitApplied EDGE_
         case "desactivado":
             try
             {
-                if(sym.$("btn_submit").length>0)
+                if(sym.$("Submit").length>0)
                 {
-                    evt.sym.getSymbol("btn_submit").play("desactivado");                    
+                    evt.sym.getSymbol("Submit").playReverse("desactivado");                    
                 }
 
                 stage.prop('ed_blocked',true);
@@ -201,9 +201,9 @@ $('body').on('EDGE_Recurso_sendPreviousData EDGE_Recurso_postSubmitApplied EDGE_
         case "activado":          
             try
             {
-                if(sym.$("btn_submit").length>0)
+                if(sym.$("Submit").length>0)
                 {
-                    evt.sym.getSymbol("btn_submit").playReverse("normal");
+                    evt.sym.getSymbol("Submit").play("activado");
                 }
 
                 stage.prop('ed_blocked',false);
@@ -254,6 +254,11 @@ $('body').on('EDGE_Recurso_Submit', function (evt) {
 
 function do_submit(sym)
 {
+    if(sym.$("Submit").length>0)
+    {
+        sym.getSymbol("Submit").playReverse("desactivado");                    
+    }
+
     var stage = $(sym.getComposition().getStage().ele);
     var json_stage = stage.prop("ed_json_property_object");
     var activity_score = 0;
@@ -283,18 +288,18 @@ function do_submit(sym)
     });
 
     var ed_obj_evt =
-            {
-                type: "EDGE_Plantilla_submitApplied",
-                interactionType: "fill-in",
-                json: retorno_datos.json_object,
-                answer: retorno_datos.user_answer,
-                results: retorno_datos.final_stage,
-                position_which_is_right: retorno_datos.position_which_is_right,
-                attempts: retorno_datos.attempts_to,
-                attempts_limit: retorno_datos.json_object.attempts,
-                sym: sym,
-                identify: stage.prop("ed_identify")
-            };
+    {
+        type: "EDGE_Plantilla_submitApplied",
+        interactionType: "fill-in",
+        json: retorno_datos.json_object,
+        answer: retorno_datos.user_answer,
+        results: retorno_datos.final_stage,
+        position_which_is_right: retorno_datos.position_which_is_right,
+        attempts: retorno_datos.attempts_to,
+        attempts_limit: retorno_datos.json_object.attempts,
+        sym: sym,
+        identify: stage.prop("ed_identify")
+    };
     //console.log(retorno_datos);
     parent.$(parent.document).trigger(ed_obj_evt);
 
