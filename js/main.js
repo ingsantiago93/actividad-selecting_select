@@ -166,7 +166,7 @@ $('body').on('EDGE_Recurso_sendPreviousData EDGE_Recurso_postSubmitApplied EDGE_
         }
     }
 
-    if(evt.block) 
+    if(evt.block)
     {
         //Debe bloquear la actividad
         stage.prop('ed_blocked', true);
@@ -222,10 +222,12 @@ $('body').on('EDGE_Recurso_sendPreviousData EDGE_Recurso_postSubmitApplied EDGE_
 function show_correct_answers(sym)
 {
     var json_stage = $(sym.getComposition().getStage().ele).prop('ed_json_property_object');
-
+    console.log("inside me", json_stage);
     $.each(json_stage.selecciones_a_elegir, function (key, json_select_object)
     {
-        sym.$('text_' + key).find('select option[value=' + json_select_object.valor_correcto + ']').attr('selected', 'selected');
+        console.log(json_select_object.valor_correcto);
+        console.log("eachy", sym.$('text_' + key).find('select option[value=' + json_select_object.valor_correcto + ']').prop('selected',true));
+        sym.$('text_' + key).find('select option[value=' + json_select_object.valor_correcto + ']').prop('selected', true);
     });
 }
 
@@ -279,12 +281,19 @@ function do_submit(sym)
         retorno_datos.user_answer[i] = sym.$('text_' + key).find('select').val();
         if (sym.$('text_' + key).find('select').val() === json_select_object.valor_correcto) {
             retorno_datos.position_which_is_right[i] = true;
-            retorno_datos.final_stage = "correct";
         } else {
             retorno_datos.position_which_is_right[i] = false;
-            retorno_datos.final_stage = "incorrect";
         }
         i++;
+
+        if(retorno_datos.user_answer.length <= (number_correct+1))
+        {
+            retorno_datos.final_stage = "correct";
+        }
+        else
+        {
+            retorno_datos.final_stage = "incorrect";
+        }
     });
 
     var ed_obj_evt =

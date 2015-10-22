@@ -15,16 +15,16 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // los alias más comu
       
       Symbol.bindSymbolAction(compId, symbolName, "creationComplete", function(sym, e) {
          // Insertar código para ejecutarse cuando el símbolo se crea aquí - M'kay
-         //ed_send_data(sym);
+         ed_send_data(sym);
       });
       //Edge binding end
 
       
 
       Symbol.bindElementAction(compId, symbolName, "${Submit}", "click", function(sym, e) {
-         // introducir aquí código para clic de ratón
-         EDGE_Recurso_Submit(sym);
-
+         //introducir aquí código para clic de ratón
+         //EDGE_Recurso_Submit(sym);
+         show_correct_answers(sym);
       });
       //Edge binding end
 
